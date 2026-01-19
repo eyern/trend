@@ -1,2 +1,2 @@
 [phases.setup]
-nixPkgs = ['python39', 'gcc', 'postgresql', 'libgobject-2.0']
+nixPkgs = ['python39', 'gcc', 'postgresql', 'libgobject']
