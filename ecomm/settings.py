@@ -31,8 +31,9 @@ SECRET_KEY = 'dcac1bfb10f580117de22397620baf242519a0ed8dd83da9ef2dfdb88eb743e0'
 DEBUG = True
 
 # Allowed hosts - read from environment variable (comma-separated values)
-ALLOWED_HOSTS = config(
-    "ALLOWED_HOSTS", default="localhost,127.0.0.1").split(",")
+ALLOWED_HOSTS = []
+
+CSRF_TRUSTED_ORIGINS = []
 
 # Base URL for the website (used in emails and payment callbacks)
 BASE_URL = config("BASE_URL", default="http://127.0.0.1:8000")
@@ -67,6 +68,9 @@ INSTALLED_APPS = [
     'django_countries',
     'crispy_forms',
     'crispy_bootstrap4',
+
+    #whitenoise stuff
+    'whitenoise.runserver_nostatic',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -90,6 +94,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'ecomm.urls'
@@ -167,6 +172,11 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "public/media")]
+
+#whitenoise static stuff
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media')
