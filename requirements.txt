@@ -59,7 +59,7 @@ python-dotenv==1.2.1
 python-http-client==3.3.7
 python3-openid==3.2.0
 PyYAML==6.0.2
-psycopg2-binary==2.9.11
+psycopg2==2.9.11
 qrcode==8.0
 razorpay==1.4.2
 reportlab==4.2.5
