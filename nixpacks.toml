@@ -1,2 +1,2 @@
 [phases.setup]
-nixPkgs = ['python39', 'gcc', 'pango', 'gdk-pixbuf', 'libffi', 'glib', 'gobject-introspection']
+nixPkgs = ['gcc', 'pango', 'gdk-pixbuf', 'libffi', 'glib', 'gobject-introspection']
