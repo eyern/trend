@@ -31,12 +31,12 @@ SECRET_KEY = 'dcac1bfb10f580117de22397620baf242519a0ed8dd83da9ef2dfdb88eb743e0'
 DEBUG = True
 
 # Allowed hosts - read from environment variable (comma-separated values)
-ALLOWED_HOSTS = ['trend-production-205d.up.railway.app', 'https://trend-production-205d.up.railway.app/']
+ALLOWED_HOSTS = ['trend-production-205d.up.railway.app', 'https://trend-production-205d.up.railway.app']
 
-CSRF_TRUSTED_ORIGINS = ['https://trend-production-205d.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://trend-production-205d.up.railway.app']
 
 # Base URL for the website (used in emails and payment callbacks)
-BASE_URL = config("BASE_URL", default="https://trend-production-205d.up.railway.app/")
+BASE_URL = config("BASE_URL", default="https://trend-production-205d.up.railway.app/" )
 
 
 # Application definition
