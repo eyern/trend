@@ -2,7 +2,6 @@ import os
 import json
 import uuid
 import razorpay
-from weasyprint import CSS, HTML
 from products.models import *
 from django.urls import reverse
 from django.conf import settings
@@ -249,40 +248,6 @@ def success(request):
     return render(request, 'payment_success/payment_success.html', context)
 
 
-# HTML to PDF Conversion
-def render_to_pdf(template_src, context_dict={}):
-    template = get_template(template_src)
-    html = template.render(context_dict)
-
-    static_root = settings.STATIC_ROOT
-    css_files = [
-        os.path.join(static_root, 'css', 'bootstrap.css'),
-        os.path.join(static_root, 'css', 'responsive.css'),
-        os.path.join(static_root, 'css', 'ui.css'),
-    ]
-    css_objects = [CSS(filename=css_file) for css_file in css_files]
-    pdf_file = HTML(string=html).write_pdf(stylesheets=css_objects)
-
-    response = HttpResponse(pdf_file, content_type='application/pdf')
-    response['Content-Disposition'] = f'attachment; filename="invoice_{context_dict["order"].order_id}.pdf"'
-    return response
-
-
-def download_invoice(request, order_id):
-    order = Order.objects.filter(order_id=order_id).first()
-    order_items = order.order_items.all()
-
-    context = {
-        'order': order,
-        'order_items': order_items,
-    }
-
-    pdf = render_to_pdf('accounts/order_pdf_generate.html', context)
-    if pdf:
-        return pdf
-    return HttpResponse("Error generating PDF", status=400)
-
-
 @login_required
 def profile_view(request, username):
     user_name = get_object_or_404(User, username=username)
@@ -368,7 +333,7 @@ def create_order(cart):
         order_id=cart.razorpay_order_id,
         payment_status="Paid",
         shipping_address=cart.user.profile.shipping_address,
-        payment_mode="Razorpay",
+        payment_mode="Mpesa",
         order_total_price=cart.get_cart_total(),
         coupon=cart.coupon,
         grand_total=cart.get_cart_total_price_after_coupon(),
