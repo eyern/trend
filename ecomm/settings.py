@@ -27,7 +27,7 @@ load_dotenv()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'dcac1bfb10f580117de22397620baf242519a0ed8dd83da9ef2dfdb88eb743e0'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production
 DEBUG = True
 
 # Allowed hosts - read from environment variable (comma-separated values)
@@ -188,28 +188,6 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Mail Configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'eyern.dev@gmail.com'
-EMAIL_HOST_PASSWORD = 'gpdp svsq ahkj lpng'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-EMAIL_USE_SSL = False
-
-# EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
-
-# ANYMAIL = {
-#     "SENDINBLUE_API_KEY": "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",  # Your Brevo API key
-# }
-
-# DEFAULT_FROM_EMAIL = "eyern.dev@gmail.com"  
-# Your verified custom domain email
-
-# RazorPay API KEYS
-# RAZORPAY_KEY_ID = config('RAZORPAY_KEY_ID')
-# RAZORPAY_SECRET_KEY = config('RAZORPAY_SECRET_KEY')
 
 # Auth Backends Configurations
 AUTHENTICATION_BACKENDS = (
