@@ -16,7 +16,7 @@ class CategoryAdminForm(forms.ModelForm):
         widgets = {
             'category_image': forms.URLInput(attrs={
                 'placeholder': 'Enter image URL or upload a file below',
-                'style': 'width: 100%;'
+                'style': 'width: 50%;'
             })
         }
 
@@ -42,7 +42,7 @@ class ProductImageAdminForm(forms.ModelForm):
         widgets = {
             'image_url': forms.URLInput(attrs={
                 'placeholder': 'Enter image URL or upload a file below',
-                'style': 'width: 100%;'
+                'style': 'width: 50%;'
             })
         }
 
@@ -55,7 +55,7 @@ class ProductImageAdmin(admin.StackedInline):
 
     def image_preview(self, obj):
         if obj.image_url:
-            return format_html('<img src="{}" width="200" style="object-fit: contain;" />', obj.image_url)
+            return format_html('<img src="{}" width="50" style="object-fit: contain;" />', obj.image_url)
         return "No Image"
     image_preview.short_description = 'Preview'
 
@@ -72,7 +72,7 @@ class ProductImageStandaloneAdmin(admin.ModelAdmin):
 
     def image_thumbnail(self, obj):
         if obj.image_url:
-            return format_html('<img src="{}" width="100" height="100" style="object-fit: cover;" />', obj.image_url)
+            return format_html('<img src="{}" width="50" height="50" style="object-fit: cover;" />', obj.image_url)
         return "No Image"
     image_thumbnail.short_description = 'Thumbnail'
 
