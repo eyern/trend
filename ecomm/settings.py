@@ -28,7 +28,7 @@ load_dotenv()
 SECRET_KEY = 'dcac1bfb10f580117de22397620baf242519a0ed8dd83da9ef2dfdb88eb743e0'
 
 # SECURITY WARNING: don't run with debug turned on in production
-DEBUG = True
+DEBUG = False
 
 # Allowed hosts - read from environment variable (comma-separated values)
 ALLOWED_HOSTS = ['trend-production-205d.up.railway.app', 'https://trend-production-205d.up.railway.app']
@@ -168,13 +168,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "public/media")]
 
 #whitenoise static stuff
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
