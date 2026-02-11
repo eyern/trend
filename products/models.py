@@ -79,7 +79,7 @@ class ProductImage(BaseModel):
         max_length=500, default='https://via.placeholder.com/500')
 
     def img_preview(self):
-        return mark_safe(f'<img src="{self.image_url}" width="50"/>')
+        return mark_safe(f'<img src="{self.image_url}" width="500"/>')
 
 
 class Coupon(BaseModel):
