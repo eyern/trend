@@ -966,7 +966,7 @@ a[class*="card"]:hover .title {
 [class*="card-product"] .img-wrap img {
   height: 100%;
   max-width: 100%;
-  width: auto;
+  width: 100%;
   display: inline-block;
   object-fit: cover;
 }
