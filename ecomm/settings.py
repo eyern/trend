@@ -201,5 +201,5 @@ LOGOUT_REDIRECT_URL = "/"
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
-DEFAULT_DOMAIN = 'https://trendybikesconnect.co.ke/'
+DEFAULT_DOMAIN = 'https://trendybikesconnect.co.ke'
 DEFAULT_HTTP_PROTOCOL = 'http'
