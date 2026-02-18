@@ -31,12 +31,12 @@ SECRET_KEY = 'dcac1bfb10f580117de22397620baf242519a0ed8dd83da9ef2dfdb88eb743e0'
 DEBUG = True
 
 # Allowed hosts - read from environment variable (comma-separated values)
-ALLOWED_HOSTS = ['trend-production-205d.up.railway.app', 'https://trend-production-205d.up.railway.app']
+ALLOWED_HOSTS = ['trendybikesconnect.co.ke', 'https://trendybikesconnect.co.ke']
 
-CSRF_TRUSTED_ORIGINS = ['https://trend-production-205d.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://trendybikesconnect.co.ke']
 
 # Base URL for the website (used in emails and payment callbacks)
-BASE_URL = config("BASE_URL", default="https://trend-production-205d.up.railway.app/" )
+BASE_URL = config("BASE_URL", default="https://trendybikesconnect.co.ke/" )
 
 
 # Application definition
@@ -201,5 +201,5 @@ LOGOUT_REDIRECT_URL = "/"
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
-DEFAULT_DOMAIN = 'https://trend-production-205d.up.railway.app/'
+DEFAULT_DOMAIN = 'https://trendybikesconnect.co.ke/'
 DEFAULT_HTTP_PROTOCOL = 'http'
