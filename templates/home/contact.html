@@ -165,69 +165,7 @@
 
       <!-- Contact Form -->
       <div class="col-lg-7" data-aos="fade-left">
-        <div class="contact-form-wrapper">
-          <div class="form-header text-center mb-4">
-            <h3 class="form-title">Send us a Message</h3>
-            <p class="form-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
-          </div>
-
-          <form method="POST" action="https://formspree.io/f/{{ form_id }}" class="modern-contact-form" id="contactForm"
-            autocomplete="off">
-            {% csrf_token %}
-            {% include "base/alert.html" %}
-
-            <div class="row g-3">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="firstName" class="form-label">First Name *</label>
-                  <input type="text" class="form-control" id="firstName" name="first-name" required>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="lastName" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="lastName" name="last-name">
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="email" class="form-label">Email Address *</label>
-              <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-              <label for="subject" class="form-label">Subject *</label>
-              <select class="form-select" id="subject" name="subject" required>
-                <option value="">Choose a subject</option>
-                <option value="general">General Inquiry</option>
-                <option value="order">Order Support</option>
-                <option value="product">Product Question</option>
-                <option value="return">Return/Exchange</option>
-                <option value="technical">Technical Support</option>
-                <option value="partnership">Partnership</option>
-                <option value="feedback">Feedback</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="message" class="form-label">Your Message *</label>
-              <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-            </div>
-
-            <div class="form-check mb-4">
-              <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
-              <label class="form-check-label" for="newsletter">
-                I'd like to receive updates and promotional emails from Trendy Bikes Connect
-              </label>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-lg w-100">
-              <span class="btn-text">Send Message</span>
-              <i class="fas fa-paper-plane ms-2"></i>
-            </button>
-          </form>
-        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.170882826731!2d37.071171474965276!3d-1.0322047989578547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f4f0bea8f3b4f%3A0xdb48a70f8e2ce72a!2sTrendy%20Bikes%20Connect%20-%20Ex%20Uk%20Bikes%20Thika!5e0!3m2!1sen!2ske!4v1771411083815!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
