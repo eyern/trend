@@ -35,9 +35,6 @@ ALLOWED_HOSTS = ['trendybikesconnect.co.ke', 'https://trendybikesconnect.co.ke']
 
 CSRF_TRUSTED_ORIGINS = ['https://trendybikesconnect.co.ke']
 
-# Base URL for the website (used in emails and payment callbacks)
-BASE_URL = config("BASE_URL", default="https://trendybikesconnect.co.ke" )
-
 
 # Application definition
 
@@ -200,5 +197,3 @@ LOGOUT_REDIRECT_URL = "/"
 # Auto signup
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
-
-DEFAULT_DOMAIN = 'https://trendybikesconnect.co.ke'
