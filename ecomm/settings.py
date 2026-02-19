@@ -80,7 +80,7 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
         'APP': {
             'client_id': os.environ['CLIENT_ID'],
-            'secret': os.environ['CLIENT_SECRET'],
+            'secret': os.environ['SECRET_KEY'],
         },
         "AUTH_PARAMS": {"access_type": "online"}
     },
