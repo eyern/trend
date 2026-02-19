@@ -41,7 +41,7 @@ BASE_URL = config("BASE_URL", default="https://trendybikesconnect.co.ke/" )
 
 # Application definition
 
-SITE_ID = 3
+SITE_ID = 2
 
 INSTALLED_APPS = [
     'django.contrib.admin',
