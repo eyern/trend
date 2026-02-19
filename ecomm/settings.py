@@ -38,7 +38,7 @@ CSRF_TRUSTED_ORIGINS = ['https://trendybikesconnect.co.ke']
 
 # Application definition
 
-SITE_ID = 3
+SITE_ID = 2
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -190,7 +190,7 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
-LOGIN_URL = "https://trendybikesconnect.co.ke/accounts/login/"
+LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
