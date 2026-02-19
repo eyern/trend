@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ['trendybikesconnect.co.ke', 'https://trendybikesconnect.co.ke']
 CSRF_TRUSTED_ORIGINS = ['https://trendybikesconnect.co.ke']
 
 # Base URL for the website (used in emails and payment callbacks)
-BASE_URL = config("BASE_URL", default="https://trendybikesconnect.co.ke/" )
+BASE_URL = config("BASE_URL", default="https://trendybikesconnect.co.ke" )
 
 
 # Application definition
