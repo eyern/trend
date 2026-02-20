@@ -78,10 +78,6 @@ SOCIALACCOUNT_PROVIDERS = {
             "profile",
             "email"
         ],
-        'APP': {
-            'client_id': os.environ['CLIENT_ID'],
-            'secret': os.environ['CLIENT_SECRET'],
-        },
         "AUTH_PARAMS": {"access_type": "online"}
     },
 }
