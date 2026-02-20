@@ -38,7 +38,7 @@ CSRF_TRUSTED_ORIGINS = ['https://trendybikesconnect.co.ke']
 
 # Application definition
 
-SITE_ID = 3
+SITE_ID = 2
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -80,7 +80,7 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
         'APP': {
             'client_id': os.environ['CLIENT_ID'],
-            'secret': os.environ['SECRET_KEY'],
+            'secret': os.environ['CLIENT_SECRET'],
         },
         "AUTH_PARAMS": {"access_type": "online"}
     },
