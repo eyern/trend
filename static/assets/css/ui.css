@@ -1306,8 +1306,8 @@ a[class*="card"]:hover .title {
   display: block;
 }
 .gallery-wrap .img-big-wrap img {
-  height: 460px;
-  width: auto;
+  height: 100%;
+  width: 100%;
   display: inline-block;
   cursor: zoom-in;
 }
