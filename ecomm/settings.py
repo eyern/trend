@@ -28,7 +28,7 @@ load_dotenv()
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production
-DEBUG = True
+DEBUG = False
 
 # Allowed hosts - read from environment variable (comma-separated values)
 ALLOWED_HOSTS = ['trendybikesconnect.co.ke', 'https://trendybikesconnect.co.ke']
@@ -36,6 +36,8 @@ ALLOWED_HOSTS = ['trendybikesconnect.co.ke', 'https://trendybikesconnect.co.ke']
 CSRF_TRUSTED_ORIGINS = ['https://trendybikesconnect.co.ke']
 
 
+# Base URL for the website (used in emails and payment callbacks)
+BASE_URL = config("BASE_URL", default="https://trendybikesconnect.co.ke")
 # Application definition
 
 SITE_ID = 5
@@ -197,3 +199,5 @@ LOGOUT_REDIRECT_URL = "/"
 # Auto signup
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
+
+SECURE_SSL_REDIRECT = True
