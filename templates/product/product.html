@@ -204,11 +204,27 @@
                     </button>
                   </form>
                 </div>
+                {% if product.is_out_of_stock %}
+                <div class="out-of-stock-stamp" style="
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: rgba(255, 0, 0, 0.7);
+                    color: white;
+                    padding: 10px;
+                    font-weight: bold;
+                    border-radius: 5px;
+                    pointer-events: none;">
+                    OUT OF STOCK
+                </div>
+                {% else %}
                 <a href="{% url 'add_to_cart' product.uid %}?size={{ selected_size }}" id="add-to-cart-btn"
                   class="btn btn-primary">
                   <i class="fas fa-shopping-bag mr-1"></i>
                   <span>Add to cart</span>
                 </a>
+                {% endif %}
                 
               </div>
             </div>

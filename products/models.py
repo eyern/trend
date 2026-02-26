@@ -51,6 +51,10 @@ class Product(BaseModel):
     newest_product = models.BooleanField(default=False)
     stock_count = models.PositiveIntegerField(default="1", null=True, blank=True)
     shipping = models.CharField(max_length=100, default="1", null=True, blank=True)
+
+    @property
+    def is_out_of_stock(self):
+        return self.stock_count <= 0
     
 
     def save(self, *args, **kwargs):
