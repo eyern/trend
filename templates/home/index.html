@@ -334,6 +334,68 @@ hr {
     15% { background-position: left 25px center; }
   }
 
+  .slider-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  background: white;
+  padding: 20px 0;
+  border-radius: 10px;
+}
+
+.slider-track {
+  display: flex;
+  width: calc(300px * 6); /* 300px per slide * 6 slides */
+  animation: autoScroll 20s linear infinite;
+}
+
+.slider-container:hover .slider-track {
+  animation-play-state: paused; /* Pause on hover */
+}
+
+.cat-slide {
+  width: 300px;
+  padding: 0 15px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.category-card h3 {
+  padding: 15px 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+@keyframes autoScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-300px * 3)); /* Shift by the width of the original set */
+  }
+}
+
 
 </style>
 <section class="hero-slider">
@@ -384,6 +446,49 @@ hr {
     <label for="slide3" class="nav-dot"></label>
   </div>
 </section>
+
+<div class="slider-container">
+  <div class="slider-track">
+    <!-- Category 1 -->
+    <a href="https://trendybikesconnect.co.ke/?category=Kids+Bikes&sort=" class="cat-slide">
+      <div class="category-card">
+        <img src="https://www.image2url.com/r2/default/images/1781948726969-03c88e42-8c9b-44e1-a669-65f440b4df33.jpg" alt="Electronics">
+        <h3>Kids Bikes</h3>
+      </div>
+    </a>
+    
+    <!-- Category 2 -->
+    <a href="https://trendybikesconnect.co.ke/?category=Hybrid+Bikes&sort=" class="cat-slide">
+      <div class="category-card">
+        <img src="https://www.image2url.com/r2/default/images/1781948758957-fe546956-3c9d-4326-b7c6-c1b9b748c6ab.jpg" alt="Fashion">
+        <h3>Gravel/Hybrid Bikes</h3>
+      </div>
+    </a>
+    
+    <!-- Category 3 -->
+    <a href="https://trendybikesconnect.co.ke/?category=Safety+Gear+%26+Accessories&sort=" class="cat-slide">
+      <div class="category-card">
+        <img src="https://www.image2url.com/r2/default/images/1781948829547-7b6e3b99-ab4d-4335-8daa-d3943f283c8a.jpg" alt="Home Decor">
+        <h3>Safety Gear & Accessories</h3>
+      </div>
+    </a>
+
+    <!-- Duplicate Categories for Infinite Loop Effect -->
+    <a href="https://trendybikesconnect.co.ke/?category=Road+Bikes&sort=" class="cat-slide">
+      <div class="category-card">
+        <img src="https://www.image2url.com/r2/default/images/1781949264489-7d6f9b2d-c065-4bb7-b09a-c9dacfa169b6.jpg" alt="Electronics">
+        <h3>Road Bikes</h3>
+      </div>
+    </a>
+    <a href="https://trendybikesconnect.co.ke/?category=Mountain+Bikes&sort=" class="cat-slide">
+      <div class="category-card">
+        <img src="https://www.image2url.com/r2/default/images/1781949215851-aa93e05a-5680-4da9-b896-67249e57c6ab.jpg" alt="Fashion">
+        <h3>Mountain Bikes</h3>
+      </div>
+    </a>
+  </div>
+</div>
+
 <div class="container mt-3 pt-3">
   {% include 'base/alert.html' %}
   <!-- Filter Section -->
