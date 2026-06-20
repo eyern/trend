@@ -1,4 +1,6 @@
 {% extends "base/base.html"%} {% block start %}
+{% load static %}
+
 <style>
   .filter-section {
     margin-bottom: 20px;
@@ -25,7 +27,363 @@
     animation-timeline: view();
     animation-range: entry 0% cover 40%;
   }
+
+    /* Hero Slider Wrapper */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Hide Radio Inputs natively */
+.hero-slider input[type="radio"] {
+  display: none;
+}
+
+/* Slides Track Wrapper */
+.slides {
+  display: flex;
+  width: 300%; /* Total slides multiplied by 100% */
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Individual Slide Structure */
+.slide {
+  width: 33.3333%; /* 100% divided by total slides */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Sleek Dark Overlay Layer */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+  z-index: 1;
+}
+
+/* Place placeholder stock images or your local directory images */
+.slide-3 { background-image: url('https://www.image2url.com/r2/default/images/1781942952994-9febfd9c-3a29-452d-95f5-5bc809162be8.jpg'); }
+.slide-2 { background-image: url('https://www.image2url.com/r2/default/images/1781945457405-3a6412a5-4363-492d-b9c4-125db795ab4d.jpg'); }
+.slide-1 { background-image: url('https://www.image2url.com/r2/default/images/1781943391553-a3ac0fa8-9abe-40fd-9710-8a6e4075d33c.jpg'); }
+
+/* Content Styling & Animation Prep */
+.slide-content {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  max-width: 600px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-in-out;
+  transition-delay: 0.2s;
+}
+
+.slide-content span {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.85rem;
+  color: #cc9933;
+  display: inline-block;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.slide-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.slide-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #e0e0e0;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 12px 35px;
+  background: #cc9933;
+  color: #111111;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 50px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: #cc9933;
+  color: #cc9933;
+  box-shadow: 0 8px 20px rgba(0, 210, 255, 0.4);
+}
+
+/* Radio Control Functionality */
+#slide1:checked ~ .slides { transform: translateX(0%); }
+#slide2:checked ~ .slides { transform: translateX(-33.3333%); }
+#slide3:checked ~ .slides { transform: translateX(-66.6666%); }
+
+/* Fade-in Text Animation for Active Slide */
+#slide1:checked ~ .slides .slide-1 .slide-content,
+#slide2:checked ~ .slides .slide-2 .slide-content,
+#slide3:checked ~ .slides .slide-3 .slide-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pagination Navigation Layout */
+.slider-nav {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Active Dot Indication */
+#slide1:checked ~ .slider-nav .nav-dot:nth-child(1),
+#slide2:checked ~ .slider-nav .nav-dot:nth-child(2),
+#slide3:checked ~ .slider-nav .nav-dot:nth-child(3) {
+  background: #cc9933;
+  border-color: #cc9933;
+  width: 35px;
+  border-radius: 10px;
+}
+
+/* Responsive Scaling */
+@media (max-width: 768px) {
+  .slide-content h1 { font-size: 2.3rem; }
+  .slide-content p { font-size: 1rem; }
+  .slide-content { padding: 0 20px; }
+  .slider-nav { bottom: 25px; }
+}
+
+.testimonials {
+    padding: 100px 0px;
+}
+
+.testimonials .title h1::before {
+    left: 30%;
+}
+
+.testimonials-content {
+    position: relative;
+    overflow: hidden;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.testimonials-box {
+    float: left;
+    transition: margin 1s ease;
+}
+
+.testimonials-img {
+    background-color: #fff;
+    margin-bottom: 15px;
+    border: 1px solid #fff;
+    padding: 40px 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: nowrap;
+    float: left;
+    width: 100%;
+}
+
+.test-img {
+    flex: 0 0 118px;
+    max-width: 118px;
+}
+
+.test-img img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.testimonials-text p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #000;
+    margin: 0;
+}
+
+.testimonials-text h6 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 10px 0 5px;
+}
+
+.slider {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.slider div {
+    height: 15px;
+    width: 15px;
+    background-color: #CC9933;
+    border: 1px solid #000;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 10px 6px;
+    cursor: pointer;
+}
+
+.slider div.active {
+    background-color: #fff;
+
+}
+
+hr {
+    margin: 10px 0px;
+  }
+  
+  .google-button {
+    display: block;
+    margin: 15px auto;
+    width: 70%;
+    max-width: 270px;
+    padding: 10px 10px 10px 50px;
+    border: 2px solid #00a0dc;
+    border-radius: 50px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+    color: #00a0dc;
+    background: url(https://cdn2.hubspot.net/hubfs/1961464/Support%20images/new-google-favicon-512.png) no-repeat left 20px center / 40px 40px;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+      -webkit-animation: wiggle 2s ease-in infinite;
+      -moz-animation: wiggle 2s ease-in infinite;
+      -o-animation: wiggle 2s ease-in infinite;
+    animation: wiggle 2s ease-in infinite;
+  }
+  
+    .google-button:hover {
+      color: #ffffff;
+      background-color: #00a0dc;
+      background-image: url(https://cdn2.hubspot.net/hubfs/1961464/Support%20images/new-google-favicon-512-white.png);
+  }
+  
+    .google-button strong {
+      font-size: 18px;
+      display: block;
+    }
+  
+  
+  @-webkit-keyframes wiggle {
+    0%, 20%, 100% { background-position: left 20px center; }
+    5% { background-position: left 15px center; }
+    10% { background-position: left 20px center; }
+    15% { background-position: left 25px center; }
+  }
+  
+  @-moz-keyframes wiggle {
+    0%, 20%, 100% { background-position: left 20px center; }
+    5% { background-position: left 15px center; }
+    10% { background-position: left 20px center; }
+    15% { background-position: left 25px center; }
+  }
+  
+  @-o-keyframes wiggle {
+    0%, 20%, 100% { background-position: left 20px center; }
+    5% { background-position: left 15px center; }
+    10% { background-position: left 20px center; }
+    15% { background-position: left 25px center; }
+  }
+  
+  @keyframes wiggle {
+    0%, 20%, 100% { background-position: left 20px center; }
+    5% { background-position: left 15px center; }
+    10% { background-position: left 20px center; }
+    15% { background-position: left 25px center; }
+  }
+
+
 </style>
+<section class="hero-slider">
+  <!-- Slider Inputs (Controls) -->
+  <input type="radio" name="slider" id="slide1" checked>
+  <input type="radio" name="slider" id="slide2">
+  <input type="radio" name="slider" id="slide3">
+
+  <!-- Slides Container -->
+  <div class="slides">
+    
+    <!-- Slide 1 -->
+    <div class="slide slide-1">
+      <div class="slide-content">
+        <span>Let's Ride For Fun</span>
+        <h1>Trendy Bikes Connect</h1>
+        <p>Whether you’re a weekend rider or a daily commuter, beginner we’ve got the bikes, tools, parts, to keep you rolling.</p>
+        <a href="#started" class="hero-btn">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide slide-2">
+      <div class="slide-content">
+        <span>Wide range of products</span>
+        <h1>Cycling Products & Accessories</h1>
+        <p>Tools,lubricants,care products to keep bikes running smoothly.</p>
+        <a href="https://trendybikesconnect.co.ke/?category=Kids+Bikes&sort=" class="hero-btn">Shop Kids Bikes</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide slide-3">
+      <div class="slide-content">
+        <span>Increase your perfomance</span>
+        <h1>Bicycle Service & Maintenance</h1>
+        <p>From routine tuneups that include gear adjustments,brake checks to more extensive overhauls</p>
+        <a href="https://trendybikesconnect.co.ke/?category=Mountain+Bikes&sort=" class="hero-btn">Shop Mountain Bikes</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Slider Pagination Dots -->
+  <div class="slider-nav">
+    <label for="slide1" class="nav-dot"></label>
+    <label for="slide2" class="nav-dot"></label>
+    <label for="slide3" class="nav-dot"></label>
+  </div>
+</section>
 <div class="container mt-3 pt-3">
   {% include 'base/alert.html' %}
   <!-- Filter Section -->
@@ -110,5 +468,187 @@
   </nav>
 
 </div>
+
+<section class="testimonials">
+  <div class="container">
+    <div class="row">
+      <div class="title text-center">
+        <h1>Our Clients Feedback - Review Us On Google!</h1>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="testimonials-content">
+        <div class="testimonials-box">
+          <div class="testimonials-img">
+            <div class="test-img">
+              <img src="{% static 'images/rev-1.jpg' %}" />
+            </div>
+            <div class="testimonials-text">
+              <p>I ordered a mountain bike while I was very far away and they delivered it on time. Great customer service and trustworthy. Easily reliable. Thank you Trendy bikes.</p>
+              <h6>Jane Njeri</h6>
+              <p></p>
+            </div>
+          </div>
+          <div class="testimonials-img">
+            <div class="test-img">
+              <img src="{% static 'images/rev-1.jpg' %}" />
+            </div>
+            <div class="testimonials-text">
+              <p>Highly recommend trendy bikes connect , quality bicycles, different varieties, durable and customer service is excellent.</p>
+              <h6>Peter Muchiri</h6>
+              <p></p>
+            </div>
+          </div>
+          <div class="testimonials-img">
+            <div class="test-img">
+              <img src="{% static 'images/rev-1.jpg' %}" />
+            </div>
+            <div class="testimonials-text">
+              <p>You must experience this one stop shop for all kind of bikes. Highly recommended for all bike enthusiast.</p>
+              <h6>Eshther Karanja</h6>
+              <p></p>
+            </div>
+          </div>
+          <div class="testimonials-img">
+            <div class="test-img">
+              <img src="{% static 'images/rev-1.jpg' %}" />
+            </div>
+            <div class="testimonials-text">
+              <p>Am giving 5 stars because the customer service is top notch and it's easy to access the shop with Amazing and wide selection of bicycles for all ages .
+                I did purchase my Mountain Bicycle and 13 months later am still enjoying my evening rides .</p>
+              <h6>Kez Njoroge</h6>
+              <p></p>
+            </div>
+          </div>
+          <div class="testimonials-img">
+            <div class="test-img">
+              <img src="{% static 'images/rev-1.jpg' %}" />
+            </div>
+            <div class="testimonials-text">
+              <p>Bought 2 bikes for my sons. 2 years on, they're still intact. Talk of quality! I would recommend trendy bikes any day!</p>
+              <h6>Nduta Nduts</h6>
+              <p></p>
+            </div>
+          </div>
+          <div class="testimonials-img">
+            <div class="test-img">
+              <img src="{% static 'images/rev-1.jpg' %}" />
+            </div>
+            <div class="testimonials-text">
+              <p>Bought one for my daughter 2 years ago. Great bike and durable.</p>
+              <h6>Joeluise Mumira</h6>
+              <p></p>
+            </div>
+          </div>
+          <div class="testimonials-img">
+            <div class="test-img">
+              <img src="{% static 'images/rev-1.jpg' %}" />
+            </div>
+            <div class="testimonials-text">
+              <p>Highly recommended for your road and mountain bikes!</p>
+              <h6>Peter Karanja</h6>
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="slider"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+
+<a class="google-button" href="https://g.page/r/CSrnLI4Pp0jbEBM/review" target="_blank">Click here to leave a <strong>google review</strong></a>
+
+<script>
+  // Testimonials Slider
+
+  const sliderContainer = document.querySelector(".testimonials-box");
+  const slider = sliderContainer.children;
+  const containerWidth = sliderContainer.offsetWidth;
+
+  const margin = 30;
+  let itemPerSlide = 0;
+  let sliderDot;
+
+  const responsive = [{
+    breakPoint: {
+      width: 0,
+      item: 1,
+    },
+  },
+  {
+    breakPoint: {
+      width: 991,
+      item: 2,
+    },
+  },
+  ];
+
+  function load() {
+    for (let i = 0; i < responsive.length; i++) {
+      if (window.innerWidth > responsive[i].breakPoint.width) {
+        itemPerSlide = responsive[i].breakPoint.item;
+      }
+    }
+    start();
+  }
+
+  function start() {
+    totalWidth = 0;
+    for (let i = 0; i < slider.length; i++) {
+      slider[i].style.width = containerWidth / itemPerSlide - margin + "px";
+      slider[i].style.margin = margin / 2 + "px";
+      totalWidth += containerWidth / itemPerSlide;
+    }
+    sliderContainer.style.width = totalWidth + "px";
+
+    sliderDot = Math.ceil(slider.length / itemPerSlide);
+
+    for (let i = 0; i < sliderDot; i++) {
+      const div = document.createElement("div");
+      div.id = i;
+      div.setAttribute("onclick", "controlSlide(this)");
+      if (i == 0) {
+        div.classList.add("active");
+      }
+      document.querySelector(".slider").appendChild(div);
+    }
+  }
+
+  let currentSlide = 0;
+  let autoSlide = 0;
+
+  function controlSlide(element) {
+    clearInterval(timer);
+    timer = setInterval(autoPlay, 5000);
+    autoSlide = element.id;
+    currentSlide = element.id;
+    changeSlide(currentSlide);
+  }
+
+  function changeSlide(currentSlide) {
+    controlButton = document.querySelector(".slider").children;
+    for (let i = 0; i < controlButton.length; i++) {
+      controlButton[i].classList.remove("active");
+    }
+    controlButton[currentSlide].classList.add("active");
+
+    sliderContainer.style.marginLeft = -(containerWidth * currentSlide) + "px";
+  }
+
+  function autoPlay() {
+    if (autoSlide == sliderDot - 1) {
+      autoSlide = 0;
+    } else {
+      autoSlide++;
+    }
+    changeSlide(autoSlide);
+  }
+  let timer = setInterval(autoPlay, 5000);
+
+  window.onload = load();
+</script>
 
 {% endblock %}
