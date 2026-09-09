@@ -486,6 +486,43 @@ hr {
         <h3>Mountain Bikes</h3>
       </div>
     </a>
+    <!-- Category 1 -->
+    <a href="https://trendybikesconnect.co.ke/?category=Kids+Bikes&sort=" class="cat-slide">
+      <div class="category-card">
+        <img src="https://www.image2url.com/r2/default/images/1781948726969-03c88e42-8c9b-44e1-a669-65f440b4df33.jpg" alt="Electronics">
+        <h3>Kids Bikes</h3>
+      </div>
+    </a>
+    
+    <!-- Category 2 -->
+    <a href="https://trendybikesconnect.co.ke/?category=Hybrid+Bikes&sort=" class="cat-slide">
+      <div class="category-card">
+        <img src="https://www.image2url.com/r2/default/images/1781948758957-fe546956-3c9d-4326-b7c6-c1b9b748c6ab.jpg" alt="Fashion">
+        <h3>Gravel/Hybrid Bikes</h3>
+      </div>
+    </a>
+    
+    <!-- Category 3 -->
+    <a href="https://trendybikesconnect.co.ke/?category=Safety+Gear+%26+Accessories&sort=" class="cat-slide">
+      <div class="category-card">
+        <img src="https://www.image2url.com/r2/default/images/1781948829547-7b6e3b99-ab4d-4335-8daa-d3943f283c8a.jpg" alt="Home Decor">
+        <h3>Safety Gear & Accessories</h3>
+      </div>
+    </a>
+
+    <!-- Duplicate Categories for Infinite Loop Effect -->
+    <a href="https://trendybikesconnect.co.ke/?category=Road+Bikes&sort=" class="cat-slide">
+      <div class="category-card">
+        <img src="https://www.image2url.com/r2/default/images/1781949264489-7d6f9b2d-c065-4bb7-b09a-c9dacfa169b6.jpg" alt="Electronics">
+        <h3>Road Bikes</h3>
+      </div>
+    </a>
+    <a href="https://trendybikesconnect.co.ke/?category=Mountain+Bikes&sort=" class="cat-slide">
+      <div class="category-card">
+        <img src="https://www.image2url.com/r2/default/images/1781949215851-aa93e05a-5680-4da9-b896-67249e57c6ab.jpg" alt="Fashion">
+        <h3>Mountain Bikes</h3>
+      </div>
+    </a>
   </div>
 </div>
 
@@ -524,6 +561,9 @@ hr {
     {% for product in products %}
     <div class="col-md-3">
       <figure class="card card-product-grid">
+        {% if product.is_out_of_stock %}
+        <span class="sold-out-badge">Sold Out</span>
+        {% endif %}
         <div class="img-wrap">
           <img src="{{product.product_images.first.image_url}}" />
         </div>
