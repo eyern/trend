@@ -45,16 +45,25 @@ class Product(BaseModel):
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="products")
     price = models.IntegerField()
+    discount_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    is_on_offer = models.BooleanField(default=False)
     product_desription = models.TextField()
     color_variant = models.ManyToManyField(ColorVariant, blank=True)
     size_variant = models.ManyToManyField(SizeVariant, blank=True)
     newest_product = models.BooleanField(default=False)
     stock_count = models.PositiveIntegerField(default="1", null=True, blank=True)
     shipping = models.CharField(max_length=100, default="1", null=True, blank=True)
+    ships_overseas = models.BooleanField(default=False, help_text="Available for international shipping")
+    ships_locally = models.BooleanField(default=False, help_text="Available for local shipping")
 
     @property
     def is_out_of_stock(self):
         return self.stock_count <= 0
+    
+    @property
+    def discount_percentage(self):
+        if self.discount_price and self.price:
+            return round(((self.price - self.discount_price) / self.price) * 100)
     
 
     def save(self, *args, **kwargs):

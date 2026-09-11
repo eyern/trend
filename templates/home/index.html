@@ -1,6 +1,5 @@
 {% extends "base/base.html"%} {% block start %}
 {% load static %}
-
 <style>
   .filter-section {
     margin-bottom: 20px;
@@ -28,7 +27,7 @@
     animation-range: entry 0% cover 40%;
   }
 
-    /* Hero Slider Wrapper */
+  /* Hero Slider Wrapper */
 .hero-slider {
   position: relative;
   width: 100%;
@@ -334,6 +333,7 @@ hr {
     15% { background-position: left 25px center; }
   }
 
+
   .slider-container {
   overflow: hidden;
   width: 100%;
@@ -397,6 +397,7 @@ hr {
 }
 
 
+
 </style>
 <section class="hero-slider">
   <!-- Slider Inputs (Controls) -->
@@ -413,7 +414,7 @@ hr {
         <span>Let's Ride For Fun</span>
         <h1>Trendy Bikes Connect</h1>
         <p>Whether you’re a weekend rider or a daily commuter, beginner we’ve got the bikes, tools, parts, to keep you rolling.</p>
-        <a href="https://trendybikesconnect.co.ke/?category=Kids+Bikes&sort=" class="hero-btn">Shop Kids Bikes</a>
+        <a href="#started" class="hero-btn">Get Started</a>
       </div>
     </div>
 
@@ -423,7 +424,7 @@ hr {
         <span>Wide range of products</span>
         <h1>Cycling Products & Accessories</h1>
         <p>Tools,lubricants,care products to keep bikes running smoothly.</p>
-        <a href="https://trendybikesconnect.co.ke/?category=Safety+Gear+%26+Accessories&sort=" class="hero-btn">Shop Accessories</a>
+        <a href="https://trendybikesconnect.co.ke/?category=Kids+Bikes&sort=" class="hero-btn">Shop Kids Bikes</a>
       </div>
     </div>
 
@@ -486,53 +487,47 @@ hr {
         <h3>Mountain Bikes</h3>
       </div>
     </a>
-    <!-- Category 1 -->
-    <a href="https://trendybikesconnect.co.ke/?category=Kids+Bikes&sort=" class="cat-slide">
-      <div class="category-card">
-        <img src="https://www.image2url.com/r2/default/images/1781948726969-03c88e42-8c9b-44e1-a669-65f440b4df33.jpg" alt="Electronics">
-        <h3>Kids Bikes</h3>
-      </div>
-    </a>
-    
-    <!-- Category 2 -->
-    <a href="https://trendybikesconnect.co.ke/?category=Hybrid+Bikes&sort=" class="cat-slide">
-      <div class="category-card">
-        <img src="https://www.image2url.com/r2/default/images/1781948758957-fe546956-3c9d-4326-b7c6-c1b9b748c6ab.jpg" alt="Fashion">
-        <h3>Gravel/Hybrid Bikes</h3>
-      </div>
-    </a>
-    
-    <!-- Category 3 -->
-    <a href="https://trendybikesconnect.co.ke/?category=Safety+Gear+%26+Accessories&sort=" class="cat-slide">
-      <div class="category-card">
-        <img src="https://www.image2url.com/r2/default/images/1781948829547-7b6e3b99-ab4d-4335-8daa-d3943f283c8a.jpg" alt="Home Decor">
-        <h3>Safety Gear & Accessories</h3>
-      </div>
-    </a>
-
-    <!-- Duplicate Categories for Infinite Loop Effect -->
-    <a href="https://trendybikesconnect.co.ke/?category=Road+Bikes&sort=" class="cat-slide">
-      <div class="category-card">
-        <img src="https://www.image2url.com/r2/default/images/1781949264489-7d6f9b2d-c065-4bb7-b09a-c9dacfa169b6.jpg" alt="Electronics">
-        <h3>Road Bikes</h3>
-      </div>
-    </a>
-    <a href="https://trendybikesconnect.co.ke/?category=Mountain+Bikes&sort=" class="cat-slide">
-      <div class="category-card">
-        <img src="https://www.image2url.com/r2/default/images/1781949215851-aa93e05a-5680-4da9-b896-67249e57c6ab.jpg" alt="Fashion">
-        <h3>Mountain Bikes</h3>
-      </div>
-    </a>
   </div>
 </div>
+<br><br>
+
+<div class="row">
+  <div class="title text-center">
+    <h1>Trendy Bikes Offers!</h1>
+  </div>
+</div>
+
+<div class="slider-wrapper">
+  <button class="slide-arrow pre-btn" id="prevBtn">&#10094;</button>
+  <div class="product-slider" id="productSlider">
+      {% for product in offer_products %}
+      <div class="product-card">
+          <div class="badge">{{ product.discount_percentage }}% OFF</div>
+          <img src="{{product.product_images.first.image_url}}" alt="{{ product.name }}" class="product-thumb">
+          <div class="product-info">
+              <h3 class="product-title">{{ product.product_name }}</h3>
+              <span class="price">KSh {{ product.discount_price }}</span>
+              <span class="actual-price">KSh {{ product.price }}</span>
+          </div>
+      </div>
+      {% empty %}
+      <p>No products on offer right now!</p>
+      {% endfor %}
+  </div>
+  <button class="slide-arrow nxt-btn" id="nextBtn">&#10095;</button>
+</div>
+
+
+
+
 
 <div class="container mt-3 pt-3">
   {% include 'base/alert.html' %}
   <!-- Filter Section -->
-  <div class="filter-section mb-3">
+  <div class="filter-section mb-3" id="started">
     <form method="GET" class="row">
       <div class="form-group col-md-6">
-        <label for="category">Shop By Category:</label>
+        <label for="category">Category:</label>
         <select id="category" name="category" class="form-control" onchange="this.form.submit()">
           <option value="">All</option>
           {% for category in categories %}
@@ -545,7 +540,7 @@ hr {
 
       <!-- Sort Section -->
       <div class="form-group col-md-6">
-        <label for="sort">Filter by:</label>
+        <label for="sort">Sort by:</label>
         <select id="sort" name="sort" class="form-control" onchange="this.form.submit()">
           <option value="">Select</option>
           <option value="newest" {% if selected_sort == 'newest' %}selected{% endif %}>Newest</option>
@@ -555,6 +550,7 @@ hr {
       </div>
     </form>
   </div>
+
 
   <!-- Product List -->
   <div class="row">
@@ -613,7 +609,6 @@ hr {
   </nav>
 
 </div>
-
 <section class="testimonials">
   <div class="container">
     <div class="row">
@@ -627,7 +622,7 @@ hr {
         <div class="testimonials-box">
           <div class="testimonials-img">
             <div class="test-img">
-              <img src="https://www.image2url.com/r2/default/images/1781947499216-86aa8453-950c-48ab-96ad-5c32a561e230.jpg" />
+              <img src="{% static 'images/rev-1.jpg' %}" />
             </div>
             <div class="testimonials-text">
               <p>I ordered a mountain bike while I was very far away and they delivered it on time. Great customer service and trustworthy. Easily reliable. Thank you Trendy bikes.</p>
@@ -637,7 +632,7 @@ hr {
           </div>
           <div class="testimonials-img">
             <div class="test-img">
-              <img src="https://www.image2url.com/r2/default/images/1781947499216-86aa8453-950c-48ab-96ad-5c32a561e230.jpg" />
+              <img src="{% static 'images/rev-1.jpg' %}" />
             </div>
             <div class="testimonials-text">
               <p>Highly recommend trendy bikes connect , quality bicycles, different varieties, durable and customer service is excellent.</p>
@@ -647,7 +642,7 @@ hr {
           </div>
           <div class="testimonials-img">
             <div class="test-img">
-              <img src="https://www.image2url.com/r2/default/images/1781947499216-86aa8453-950c-48ab-96ad-5c32a561e230.jpg" />
+              <img src="{% static 'images/rev-1.jpg' %}" />
             </div>
             <div class="testimonials-text">
               <p>You must experience this one stop shop for all kind of bikes. Highly recommended for all bike enthusiast.</p>
@@ -657,7 +652,7 @@ hr {
           </div>
           <div class="testimonials-img">
             <div class="test-img">
-              <img src="https://www.image2url.com/r2/default/images/1781947499216-86aa8453-950c-48ab-96ad-5c32a561e230.jpg" />
+              <img src="{% static 'images/rev-1.jpg' %}" />
             </div>
             <div class="testimonials-text">
               <p>Am giving 5 stars because the customer service is top notch and it's easy to access the shop with Amazing and wide selection of bicycles for all ages .
@@ -668,7 +663,7 @@ hr {
           </div>
           <div class="testimonials-img">
             <div class="test-img">
-              <img src="https://www.image2url.com/r2/default/images/1781947499216-86aa8453-950c-48ab-96ad-5c32a561e230.jpg" />
+              <img src="{% static 'images/rev-1.jpg' %}" />
             </div>
             <div class="testimonials-text">
               <p>Bought 2 bikes for my sons. 2 years on, they're still intact. Talk of quality! I would recommend trendy bikes any day!</p>
@@ -678,7 +673,7 @@ hr {
           </div>
           <div class="testimonials-img">
             <div class="test-img">
-              <img src="https://www.image2url.com/r2/default/images/1781947499216-86aa8453-950c-48ab-96ad-5c32a561e230.jpg" />
+              <img src="{% static 'images/rev-1.jpg' %}" />
             </div>
             <div class="testimonials-text">
               <p>Bought one for my daughter 2 years ago. Great bike and durable.</p>
@@ -688,7 +683,7 @@ hr {
           </div>
           <div class="testimonials-img">
             <div class="test-img">
-              <img src="https://www.image2url.com/r2/default/images/1781947499216-86aa8453-950c-48ab-96ad-5c32a561e230.jpg" />
+              <img src="{% static 'images/rev-1.jpg' %}" />
             </div>
             <div class="testimonials-text">
               <p>Highly recommended for your road and mountain bikes!</p>
@@ -702,7 +697,6 @@ hr {
     </div>
   </div>
 </section>
-<hr>
 
 <a class="google-button" href="https://g.page/r/CSrnLI4Pp0jbEBM/review" target="_blank">Click here to leave a <strong>google review</strong></a>
 

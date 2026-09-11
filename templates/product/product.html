@@ -1,5 +1,5 @@
 {% extends "base/base.html"%}
-{% block title %}{{product.product_name}} {% endblock %}
+{% block title %}{{product.product_name}} in Thika.{% endblock %}
 {% block start %} {% load crispy_forms_tags %}
 
 <style>
@@ -147,9 +147,9 @@
 
             <div class="mb-3">
               {% if updated_price %}
-              <var class="price h4">KSh {{ updated_price }}.00</var>
+              <var class="price h4">KSh{{ updated_price }}.00</var>
               {% else%}
-              <var class="price h4">KSh {{ product.price }}.00</var>
+              <var class="price h4">KSh{{ product.price }}.00</var>
               {% endif %}
             </div>
             <!-- price-detail-wrap .// -->
@@ -162,15 +162,13 @@
               <dt class="col-sm-3">🚲 Brand: </dt>
               <dd class="col-sm-9">EX-UK</dd>
 
-              <dt class="col-sm-3">Color:</dt>
+              <dt class="col-sm-3">Color: </dt>
               <dd class="col-sm-9">
                 {% for color in product.color_variant.all %} {{ color.color_name }} {% endfor %}
               </dd>
 
               <dt class="col-sm-3">🚚 Delivery: </dt>
-              <dd class="col-sm-9">Ships from Thika Town in 1-2 days</dd>
-              <dt class="col-sm-3">✈️ Shipped from Abroad: </dt>
-              <dd class="col-sm-9">1-2 Weeks</dd>
+              <dd class="col-sm-9">Local delivery Ships from Thika Town in 1-2 days</dd>
             </dl>
 
             <hr />
@@ -194,6 +192,36 @@
               </div>
               {% endif %}
             </div>
+            <!-- product_detail.html -->
+            <div class="product-shipping-badges">
+                
+              <!-- Local Shipping Badge -->
+              {% if product.ships_locally %}
+              <div class="shipping-badge local-shipping">
+                  <svg class="shipping-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="1" y="3" width="15" height="13"></rect>
+                      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                      <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                      <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                  </svg>
+                  <span class="shipping-text">Local Delivery (Ships from Thika Town)</span>
+              </div>
+              {% endif %}
+
+              <!-- Overseas Shipping Badge -->
+              {% if product.ships_overseas %}
+              <div class="shipping-badge overseas-shipping">
+                  <svg class="shipping-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                  <span class="shipping-text">Overseas Shipment (1-2 Weeks)</span>
+              </div>
+              {% endif %}
+
+            </div>
+
 
             <!-- Add to Wishlist Button -->
             <div class="form-group d-flex justify-content-start">
@@ -231,7 +259,7 @@
               </div>
             </div>
           </article>
-          <a href="https://api.whatsapp.com/send?phone=254721461148&text=Hi. I'm from Trendy Bikes Connect website.%0A I would like to order {{product.product_name}}" class="btn--whatsapp">
+          <a href="https://wa.me" class="btn--whatsapp">
             Order on WhatsApp
           </a>
         </main>

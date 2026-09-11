@@ -959,7 +959,7 @@ a[class*="card"]:hover .title {
 
 /* BASE STYLE FOR PRODUCT ITEM */
 [class*="card-product"] a.title {
-  color: #3167eb;
+  color: #212529;
   display: block;
 }
 [class*="card-product"] a.title:hover {
@@ -980,7 +980,7 @@ a[class*="card"]:hover .title {
 [class*="card-product"] .img-wrap img {
   height: 100%;
   max-width: 100%;
-  width: 100%;
+  width: auto;
   display: inline-block;
   object-fit: cover;
 }
@@ -1320,8 +1320,8 @@ a[class*="card"]:hover .title {
   display: block;
 }
 .gallery-wrap .img-big-wrap img {
-  height: 100%;
-  width: 100%;
+  height: 460px;
+  width: auto;
   display: inline-block;
   cursor: zoom-in;
 }
@@ -1439,4 +1439,101 @@ a[class*="card"]:hover .title {
   5% { background-position: left 15px center; }
   10% { background-position: left 20px center; }
   15% { background-position: left 25px center; }
+}
+
+.slider-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 40px;
+}
+.product-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+}
+/* Hide default native scrollbars */
+.product-slider::-webkit-scrollbar {
+  display: none;
+}
+.product-card {
+  flex: 0 0 calc(25% - 15px); /* Layout 4 products simultaneously on widescreen grids */
+  background: #fff;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.badge {
+  position: absolute;
+  top: 10px; left: 10px;
+  background: #ff3e3e;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+.product-thumb {
+  width: 100%; height: 220px;
+  object-fit: cover;
+}
+.product-info { padding: 15px; }
+.product-title { font-size: 16px; margin-bottom: 10px; }
+.price { font-weight: bold; color: #ff3e3e; }
+.actual-price { text-decoration: line-through; color: #888; margin-left: 10px; }
+
+.slide-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: #fff; border: 1px solid #ddd;
+  width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+.pre-btn { left: -10px; }
+.nxt-btn { right: -10px; }
+
+/* Responsive break points adjustment */
+@media (max-width: 992px) {
+  .product-card { flex: 0 0 calc(50% - 10px); } /* Show 2 cards */
+}
+@media (max-width: 576px) {
+  .product-card { flex: 0 0 100%; } /* Show 1 card */
+}
+
+/* Shipping Badges Wrapper */
+.product-shipping-badges {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Base Badge Style */
+.shipping-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Icon Sizing */
+.shipping-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Variant Specific Color Palettes */
+.local-shipping {
+  background-color: #e6f4ea;
+  color: #137333;
+}
+
+.overseas-shipping {
+  background-color: #e8f0fe;
+  color: #1a73e8;
 }

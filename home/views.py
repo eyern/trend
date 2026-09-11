@@ -7,7 +7,8 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def index(request):
-    query = Product.objects.all().order_by('price')
+    query = Product.objects.all()
+    offer_products = Product.objects.filter(is_on_offer=True)
     categories = Category.objects.all()
     selected_sort = request.GET.get('sort')
     selected_category = request.GET.get('category')
@@ -40,6 +41,7 @@ def index(request):
         'categories': categories,
         'selected_category': selected_category,
         'selected_sort': selected_sort,
+        'offer_products': offer_products,
     }
     return render(request, 'home/index.html', context)
 
@@ -73,3 +75,5 @@ def terms_and_conditions(request):
 
 def privacy_policy(request):
     return render(request, 'home/privacy_policy.html')
+
+

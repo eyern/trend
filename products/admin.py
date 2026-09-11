@@ -16,7 +16,7 @@ class CategoryAdminForm(forms.ModelForm):
         widgets = {
             'category_image': forms.URLInput(attrs={
                 'placeholder': 'Enter image URL or upload a file below',
-                'style': 'width: 50%;'
+                'style': 'width: 100%;'
             })
         }
 
@@ -42,7 +42,7 @@ class ProductImageAdminForm(forms.ModelForm):
         widgets = {
             'image_url': forms.URLInput(attrs={
                 'placeholder': 'Enter image URL or upload a file below',
-                'style': 'width: 50%;'
+                'style': 'width: 100%;'
             })
         }
 
@@ -55,14 +55,17 @@ class ProductImageAdmin(admin.StackedInline):
 
     def image_preview(self, obj):
         if obj.image_url:
-            return format_html('<img src="{}" width="50" style="object-fit: contain;" />', obj.image_url)
+            return format_html('<img src="{}" width="200" style="object-fit: contain;" />', obj.image_url)
         return "No Image"
     image_preview.short_description = 'Preview'
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['product_name', 'price']
+    list_display = ['product_name', 'price', 'category', 'stock_count']
     inlines = [ProductImageAdmin]
+    search_fields = ('slug', 'product_name')
+    list_editable = ('price', 'stock_count')
+    prepopulated_fields = {'slug': ('product_name',)} # Auto-fills 'slug' from 'name'
 
 
 class ProductImageStandaloneAdmin(admin.ModelAdmin):
@@ -72,7 +75,7 @@ class ProductImageStandaloneAdmin(admin.ModelAdmin):
 
     def image_thumbnail(self, obj):
         if obj.image_url:
-            return format_html('<img src="{}" width="50" height="50" style="object-fit: cover;" />', obj.image_url)
+            return format_html('<img src="{}" width="100" height="100" style="object-fit: cover;" />', obj.image_url)
         return "No Image"
     image_thumbnail.short_description = 'Thumbnail'
 
