@@ -1485,7 +1485,7 @@ a[class*="card"]:hover .title {
 .price { font-weight: bold; color: #ff3e3e; }
 .actual-price { text-decoration: line-through; color: #888; margin-left: 10px; }
 
-.slide-arrow {
+.offer-slide-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
   background: #fff; border: 1px solid #ddd;
   width: 40px; height: 40px; border-radius: 50%; cursor: pointer;

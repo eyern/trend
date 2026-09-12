@@ -491,6 +491,32 @@ hr {
 </div>
 <br><br>
 
+<div class="row">
+  <div class="title text-center">
+    <h1>Trendy Bikes Offers!</h1>
+  </div>
+</div>
+
+<div class="offer-slider-wrapper">
+  <button class="offer-slide-arrow pre-btn" id="prevBtn">&#10094;</button>
+  <div class="offer-product-slider" id="offerProductSlider">
+      {% for product in offer_products %}
+      <div class="offer-product-card">
+          <div class="badge">{{ product.discount_percentage }}% OFF</div>
+          <img src="{{product.product_images.first.image_url}}" alt="{{ product.name }}" class="offer-product-thumb">
+          <div class="offer-product-info">
+              <h3 class="offer-product-title">{{ product.product_name }}</h3>
+              <span class="offer-price">KSh {{ product.discount_price }}</span>
+              <span class="offer-actual-price">KSh {{ product.price }}</span>
+          </div>
+      </div>
+      {% empty %}
+      <p>No products on offer right now!</p>
+      {% endfor %}
+  </div>
+  <button class="offer-slide-arrow nxt-btn" id="nextBtn">&#10095;</button>
+</div>
+
 
 <div class="container mt-3 pt-3">
   {% include 'base/alert.html' %}
