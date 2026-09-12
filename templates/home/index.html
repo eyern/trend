@@ -502,7 +502,7 @@ hr {
   <div class="offer-product-slider" id="offerProductSlider">
       {% for product in offer_products %}
       <div class="offer-product-card">
-          <div class="badge">{{ product.discount_percentage }}% OFF</div>
+          <div class="out-badge">{{ product.discount_percentage }}% OFF</div>
           <img src="{{product.product_images.first.image_url}}" alt="{{ product.name }}" class="offer-product-thumb">
           <div class="offer-product-info">
               <h3 class="offer-product-title">{{ product.product_name }}</h3>

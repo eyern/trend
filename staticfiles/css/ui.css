@@ -1466,7 +1466,7 @@ a[class*="card"]:hover .title {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   overflow: hidden;
 }
-.badge {
+.out-badge {
   position: absolute;
   top: 10px; left: 10px;
   background: #ff3e3e;
