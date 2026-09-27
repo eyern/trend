@@ -193,33 +193,6 @@
               {% endif %}
             </div>
 
-            <div class="product-shipping-badges">
-                
-              {% if product.ships_locally %}
-              <div class="shipping-badge local-shipping">
-                  <svg class="shipping-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="1" y="3" width="15" height="13"></rect>
-                      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                      <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                      <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                  </svg>
-                  <span class="shipping-text">Local Delivery (Ships from Thika Town)</span>
-              </div>
-              {% endif %}
-
-              {% if product.ships_overseas %}
-              <div class="shipping-badge overseas-shipping">
-                  <svg class="shipping-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="2" y1="12" x2="22" y2="12"></line>
-                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                  </svg>
-                  <span class="shipping-text">Overseas Shipment (1-2 Weeks)</span>
-              </div>
-              {% endif %}
-
-            </div>
-
 
             <!-- Add to Wishlist Button -->
             <div class="form-group d-flex justify-content-start">
