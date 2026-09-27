@@ -528,9 +528,6 @@ hr {
     {% for product in products %}
     <div class="col-md-3">
       <figure class="card card-product-grid">
-        {% if product.is_out_of_stock %}
-        <span class="sold-out-badge">Sold Out</span>
-        {% endif %}
         <div class="img-wrap">
           <img src="{{product.product_images.first.image_url}}" />
         </div>
