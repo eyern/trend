@@ -26,7 +26,7 @@ load_dotenv()
 
 SECRET_KEY =  os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production
-DEBUG = True
+DEBUG = False
 
 # Allowed hosts - read from environment variable (comma-separated values)
 ALLOWED_HOSTS = ['127.0.0.1','trendybikesconnect.co.ke', 'https://trendybikesconnect.co.ke']
