@@ -167,7 +167,7 @@ USE_TZ = True
 #Static Files Whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
