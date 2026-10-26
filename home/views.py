@@ -12,6 +12,7 @@ def index(request):
     categories = Category.objects.all()
     selected_sort = request.GET.get('sort')
     selected_category = request.GET.get('category')
+    featured_products = Product.objects.filter(is_featured=True)[:5]
 
     if selected_category:
         query = query.filter(category__category_name=selected_category)
@@ -42,6 +43,7 @@ def index(request):
         'selected_category': selected_category,
         'selected_sort': selected_sort,
         'offer_products': offer_products,
+        'featured_products': featured_products,
     }
     return render(request, 'home/index.html', context)
 
@@ -68,10 +70,8 @@ def contact(request):
 def about(request):
     return render(request, 'home/about.html')
 
-
 def terms_and_conditions(request):
     return render(request, 'home/terms_and_conditions.html')
-
 
 def privacy_policy(request):
     return render(request, 'home/privacy_policy.html')
