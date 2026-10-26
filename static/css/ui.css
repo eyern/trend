@@ -1653,9 +1653,10 @@ a[class*="card"]:hover .title {
 }
 
 .offer-product-image {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
+  max-width: 100%;
+  width: auto;
+  height: 250px;
+  object-fit: cover;
 }
 
 .offer-price-box {

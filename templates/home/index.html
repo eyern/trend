@@ -456,8 +456,9 @@ hr {
 
 .featured-slide-card img {
     max-width: 100%;
+    width: auto;
     height: 250px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .featured-slide-info h3 {
@@ -672,10 +673,6 @@ hr {
     {% for product in products %}
     <div class="col-md-3">
       <figure class="card card-product-grid">
-        <!-- Out of Stock Badge -->
-        {% if product.is_out_of_stock %}
-            <div class="out-of-stock-badge">OUT OF STOCK</div>
-        {% endif %}
         <div class="img-wrap">
           <img src="{{product.product_images.first.image_url}}" />
         </div>
