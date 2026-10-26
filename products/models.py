@@ -55,10 +55,15 @@ class Product(BaseModel):
     shipping = models.CharField(max_length=100, default="1", null=True, blank=True)
     ships_overseas = models.BooleanField(default=False, help_text="Available for international shipping")
     ships_locally = models.BooleanField(default=False, help_text="Available for local shipping")
+    is_featured = models.BooleanField(default=False)  # Flags products for the slider
 
     @property
     def is_out_of_stock(self):
         return self.stock_count <= 0
+    
+    @property
+    def current_price(self):
+        return self.price - self.discount_price
     
     @property
     def discount_percentage(self):
