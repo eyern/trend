@@ -45,7 +45,7 @@ class Product(BaseModel):
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="products")
     price = models.IntegerField()
-    discount_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    discount_price = models.IntegerField(default=0)
     is_on_offer = models.BooleanField(default=False)
     product_desription = models.TextField()
     color_variant = models.ManyToManyField(ColorVariant, blank=True)

@@ -192,6 +192,35 @@
               </div>
               {% endif %}
             </div>
+            <!-- product_detail.html -->
+            <div class="product-shipping-badges">
+                
+              <!-- Local Shipping Badge -->
+              {% if product.ships_locally %}
+              <div class="shipping-badge local-shipping">
+                  <svg class="shipping-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="1" y="3" width="15" height="13"></rect>
+                      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                      <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                      <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                  </svg>
+                  <span class="shipping-text">Local Delivery (Ships from Thika Town)</span>
+              </div>
+              {% endif %}
+
+              <!-- Overseas Shipping Badge -->
+              {% if product.ships_overseas %}
+              <div class="shipping-badge overseas-shipping">
+                  <svg class="shipping-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                  <span class="shipping-text">Overseas Shipment (1-2 Weeks)</span>
+              </div>
+              {% endif %}
+
+            </div>
 
 
             <!-- Add to Wishlist Button -->
@@ -206,19 +235,7 @@
                   </form>
                 </div>
                 {% if product.is_out_of_stock %}
-                <div class="out-of-stock-stamp" style="
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    background-color: rgba(255, 0, 0, 0.7);
-                    color: white;
-                    padding: 10px;
-                    font-weight: bold;
-                    border-radius: 5px;
-                    pointer-events: none;">
-                    OUT OF STOCK
-                </div>
+                <div class="out-of-stock-badge">SOLD OUT</div>
                 {% else %}
                 <a href="{% url 'add_to_cart' product.uid %}?size={{ selected_size }}" id="add-to-cart-btn"
                   class="btn btn-primary">
@@ -230,7 +247,7 @@
               </div>
             </div>
           </article>
-          <a href="https://wa.me/" class="btn--whatsapp">
+          <a href="https://wa.me" class="btn--whatsapp">
             Order on WhatsApp
           </a>
         </main>
