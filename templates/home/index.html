@@ -456,9 +456,8 @@ hr {
 
 .featured-slide-card img {
     max-width: 100%;
-    width: auto;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .featured-slide-info h3 {
@@ -611,6 +610,7 @@ hr {
   <div class="featured-section-header">
     <span class="featured-badge">The Deal Zone</span>
     <h2 class="featured-section-title">The Breakaway: Catch Them If You Can</h2>
+    <p class="featured-section-subtitle">Discover our top-rated, premium items & trending this week.</p>
   </div>
 </section>
 <!-- index.html -->
@@ -622,7 +622,7 @@ hr {
           <img src="{{product.product_images.first.image_url}}" alt="{{ product.product_name }}" class="offer-product-image">
           <h3 class="offer-product-title">{{ product.product_name }}</h3>
           <div class="offer-price-box">
-              <span class="offer-current-price">KSh {{ product.discount_price }}</span>
+              <span class="offer-current-price">KSh {{ product.current_price }}</span>
               <span class="offer-original-price">KSh {{ product.price }}</span>
           </div>
           <a href="{% url 'get_product' product.slug %}" class="btn-buy">View Product</a>
@@ -672,6 +672,10 @@ hr {
     {% for product in products %}
     <div class="col-md-3">
       <figure class="card card-product-grid">
+        <!-- Out of Stock Badge -->
+        {% if product.is_out_of_stock %}
+            <div class="out-of-stock-badge">OUT OF STOCK</div>
+        {% endif %}
         <div class="img-wrap">
           <img src="{{product.product_images.first.image_url}}" />
         </div>
