@@ -41,12 +41,14 @@ class Product(BaseModel):
     parent = models.ForeignKey(
         'self', related_name='variants', on_delete=models.CASCADE, blank=True, null=True)
     product_name = models.CharField(max_length=100)
+    serial_number = models.CharField(max_length=50, unique=True, null=True, blank=True)
     slug = models.SlugField(unique=True, null=True, blank=True)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="products")
     price = models.IntegerField()
     discount_price = models.IntegerField(default=0)
     is_on_offer = models.BooleanField(default=False)
+    is_featured = models.BooleanField(default=False)  # Flags products for the slider
     product_desription = models.TextField()
     color_variant = models.ManyToManyField(ColorVariant, blank=True)
     size_variant = models.ManyToManyField(SizeVariant, blank=True)
@@ -55,7 +57,6 @@ class Product(BaseModel):
     shipping = models.CharField(max_length=100, default="1", null=True, blank=True)
     ships_overseas = models.BooleanField(default=False, help_text="Available for international shipping")
     ships_locally = models.BooleanField(default=False, help_text="Available for local shipping")
-    is_featured = models.BooleanField(default=False)  # Flags products for the slider
 
     @property
     def is_out_of_stock(self):
