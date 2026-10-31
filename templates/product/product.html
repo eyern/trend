@@ -830,6 +830,32 @@
   .form-submitted {
     animation: submitSuccess 0.3s ease;
   }
+
+  /* Optional: Slightly blur or dim the image if it's out of stock */
+.out-of-stock-blur {
+  filter: grayscale(40%) brightness(70%);
+}
+
+/* The Out of Stock Stamp */
+.out-of-stock-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg); /* Centered and slightly tilted like a stamp */
+  background-color: rgba(220, 53, 69, 0.9); /* Dark semi-transparent red */
+  color: #ffffff;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 3px double #ffffff; /* Gives it a classic stamp border look */
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  pointer-events: none; /* Allows clicks to pass through if needed */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
 </style>
 
 <script>
